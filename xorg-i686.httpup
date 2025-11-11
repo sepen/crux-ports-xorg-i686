@@ -1,0 +1,8 @@
+#
+# /etc/ports/xorg-i686.httpup: Unofficial xorg ports for CRUX i686
+#
+
+ROOT_DIR=/usr/ports/xorg-i686
+URL=https://raw.githubusercontent.com/sepen/crux-ports-xorg-i686/3.8/
+
+# End of file
