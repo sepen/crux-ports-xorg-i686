@@ -1,0 +1,53 @@
+# README for mesa
+
+
+Notes for i686 Mesa Overlay:
+
+  This configuration belongs to the CRUX i686 overlay and provides
+  a Mesa build adapted for 32-bit systems. It enables only the essential
+  Gallium drivers and rendering paths that remain compatible with legacy
+  hardware. Vulkan, OpenCL, and hardware video acceleration are excluded
+  for simplicity and stability.
+
+  Please refer to the upstream core/README.md for additional context
+  and general Mesa build information.
+
+
+User-defined build options:
+
+  b_lto          : false        # Disable link-time optimization (unstable on i686)
+  b_pie          : false        # Disable PIE; unnecessary for shared libs on 32-bit
+  egl            : enabled      # Enable EGL for modern rendering support
+  gallium-drivers: crocus,nouveau,r300,svga,virgl,i915,softpipe  # Only 32-bit friendly drivers
+  gallium-va     : disabled     # Disable VA-API acceleration (not supported on old GPUs)
+  gallium-vdpau  : disabled     # Disable VDPAU acceleration (not useful on i686)
+  gbm            : enabled      # Enable GBM for EGL/DRI integration
+  gles1          : disabled     # GLES1 is deprecated and unnecessary
+  gles2          : enabled      # GLES2 support retained for lightweight modern apps
+  glvnd          : enabled      # Enable GL Vendor-Neutral Dispatch (modern GL setup)
+  glx            : dri          # Use DRI-based GLX for X11 rendering
+  llvm           : enabled      # Keep LLVM for llvmpipe and software rendering
+  platforms      : x11          # Focus on X11 (legacy-friendly)
+  shared-llvm    : enabled      # Link dynamically against system LLVM
+  video-codecs   : all          # Safe default (no VA/VDPAU anyway)
+  vulkan-drivers :              # Disabled (no Vulkan support for 32-bit)
+  vulkan-layers  :              # Disabled (Vulkan not included)
+
+
+Pkgfile notes:
+
+  The Pkgfile includes some optional dependencies to remain aligned with
+  the upstream core/mesa port from CRUX. However, certain features or
+  libraries may fail to compile or behave unstably on 32-bit architectures.
+  These optional components are preserved mainly for compatibility with
+  the upstream packaging structure, but they are not required for a
+  functional i686 build.
+
+
+Summary:
+
+  - Targets legacy 32-bit (i686) systems.
+  - Excludes 64-bit-only or unstable components (Vulkan, VA-API, VDPAU).
+  - Provides essential Gallium drivers for Intel, Radeon, Nouveau, and virtualization.
+  - Uses X11 and DRI rendering paths for maximum compatibility.
+  - Provides a minimal, stable, and compatible Mesa build for old hardware.
