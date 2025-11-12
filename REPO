@@ -1,5 +1,10 @@
+d:xorg-server
 d:mesa
-f:77ff6e81f45afa18c97b3ce0fdf879a0:mesa/Pkgfile
+f:53f9e499177bae0815375f3f5d134778:xorg-server/Pkgfile
+f:37fdd70d5f953f7791786cb7c6611058:xorg-server/.md5sum
+f:8e02c2d55acc3c90e4b77c3c09bcf41e:xorg-server/.footprint
+f:73932869961838e0409fbbff9e83c979:xorg-server/README
+f:0b78593e840ceefa5e11139ced6c8509:mesa/Pkgfile
 f:e206a0bdaeee10d0daffef7f7776719f:mesa/.md5sum
 f:5705b2f3d9b1e76d2c7d9bbdef7f0b82:mesa/.footprint
 f:d4bb638484e73782c3bc739b43b2ecd7:mesa/README
